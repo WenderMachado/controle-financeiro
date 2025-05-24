@@ -41,3 +41,7 @@ function renderTransaction(transaction){
   container.append(title, amount)
   document.querySelector('#transactions').append(container)
 }
+
+async function fetchTransactions() {
+  return await fetch('http://localhost:3000/transactions').then(res =>{ res.json()})
+}
