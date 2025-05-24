@@ -11,18 +11,25 @@
   <main>
     <form>
       <h2>Nova Transação</h2>
+
       <input type="hidden" id="id" name="id">
+      
       <label for="name">Nome:</label>
       <input type="text" id="name" name="name">
+
       <label for="amount">Valor:</label>
       <input type="number" step="0.01" id="amount" name="amount">
+
       <br><br>
       <button>Salvar</button>
+
     </form>
     <div>
       <h2>Saldo: <span id="balance"></span></h2>
       <h2>Histórico de Transações</h2>
-      <section id="transactions"></section>
+      <section id="transactions">
+
+      </section>
     </div>
   </main>
 
