@@ -1,47 +1,76 @@
-function createTransactionContainer(id){
-  const container = document.createElemete('div')
+let transactions = []
+
+
+function createTransactionContainer(id) {
+  const container = document.createElement('div')
   container.classList.add('transaction')
-  container.id = `transaction${id}`
+  container.id = `transaction-${id}`
   return container
 }
 
-function createTransactionTitle(name){
+function createTransactionTitle(name) {
   const title = document.createElement('span')
+  title.classList.add('transaction-title')
   title.textContent = name
   return title
 }
 
-function createTransactionAmount(amount){
+function createTransactionAmount(amount) {
   const span = document.createElement('span')
-
-  const formater = Intl.NumberFormat('pt-BR',{
+  span.classList.add('transaction-amount')
+  const formater = Intl.NumberFormat('pt-BR', {
     compactDisplay: 'long',
     currency: 'BRL',
-    style: 'currency'
+    style: 'currency',
   })
-
   const formatedAmount = formater.format(amount)
-
-  amount.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
-  if(amount > 0) {
+  if (amount > 0) {
     span.textContent = `${formatedAmount} C`
     span.classList.add('credit')
-  }else{
+  } else {
     span.textContent = `${formatedAmount} D`
-       span.classList.add('debit')
+    span.classList.add('debit')
   }
   return span
 }
-
-function renderTransaction(transaction){
+function renderTransaction(transaction) {
   const container = createTransactionContainer(transaction.id)
   const title = createTransactionTitle(transaction.name)
   const amount = createTransactionAmount(transaction.amount)
 
-  container.append(title, amount)
   document.querySelector('#transactions').append(container)
+  container.append(title, amount)
+}
+
+async function saveTransections(ev) {
+  ev.preventDefault()
+  const name = document.querySelector('#name').value
+  const amount = document.querySelector('#amount').value
+
+  const response = await fetch('http://localhost:3000/transactions', {
+    method: 'POST',
+    body: JSON.stringify({name, amount}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const transaction = await response.json()
+  transactions.push(transaction)
+  renderTransaction(transaction)
+  ev.target.reset()
+  updateBalance()
 }
 
 async function fetchTransactions() {
-  return await fetch('http://localhost:3000/transactions').then(res =>{ res.json()})
+  return await fetch('http://localhost:3000/transactions').then(res => res.json())
 }
+
+async function setup(){
+  const results = await fetchTransactions()
+  transactions.push(...results)
+  transactions.forEach(renderTransaction)
+}
+
+document.addEventListener('DOMContentLoaded', setup)
+document.querySelector('form');addEventListener('submit', saveTransections)
+ 
