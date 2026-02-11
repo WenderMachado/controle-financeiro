@@ -1,29 +1,3 @@
 {
-  "transactions": [
-    {
-      "id": "1",
-      "name": "Freela",
-      "amount": 300
-    },
-    {
-      "name": "Salário",
-      "amount": 3200,
-      "id": "3"
-    },
-    {
-      "id": "52e2",
-      "name": "Wendinho",
-      "amount": "4000000"
-    },
-    {
-      "id": "614e",
-      "name": "Wender Pereira",
-      "amount": "4000000"
-    },
-    {
-      "id": "8ce9",
-      "name": "asdas",
-      "amount": "-2000"
-    }
-  ]
+  "transactions": []
 }
