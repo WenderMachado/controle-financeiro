@@ -1,38 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minhas Finanças</title>
+  <script src="/js/index.js"></script>
+  <link rel="stylesheet" href="styles/global.css">
 </head>
 <body>
-  <h1>Minhas Finanças</h1>
-  <main>
+  <header>
+    <h1>Minhas Finanças</h1>
+    <nav>
+      <a href="#">Histórico</a>
+      <a href="#">Home</a>
+    </nav>
+  </header>
+
+  <main class="hero">
     <form>
-      <h2>Nova Transação</h2>
-
+      <h2 class="title">Nova Transação: 💸💵💲</h2>
       <input type="hidden" id="id" name="id">
-      
-      <label for="name">Nome:</label>
-      <input type="text" id="name" name="name">
 
-      <label for="amount">Valor:</label>
-      <input type="number" step="0.01" id="amount" name="amount">
+      <div class="card-pai">
+        <div class="card-two">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="name">
+        </div>
 
-      <br><br>
-      <button>Salvar</button>
+        <div class="card-two">
+          <label for="amount">Valor:</label>
+          <input type="number" step="0.01" id="amount" name="amount">
+        </div>
 
+        <button>Salvar</button>
+      </div>  
+      <div class="balance-container">
+        <h2>Saldo: <span id="balance"></span></h2>
+        <h2>Histórico de Transações</h2>
+      </div>
+     <section id="transactions"></section>
     </form>
-    <div>
-      <h2>Saldo: <span id="balance"></span></h2>
-      <h2>Histórico de Transações</h2>
-      <section id="transactions">
 
-      </section>
-    </div>
+    
   </main>
-
-  <script src="index.js"></script>
+ 
 </body>
 </html>
