@@ -62,6 +62,13 @@ form {
 }
 
 .title {
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+.title-1{
   font-size: 3.6rem;
   font-weight: 500;
   color: #000000;
@@ -141,11 +148,20 @@ button:hover {
 
 /* Área do Histórico (Caixa Preta) */
 #transactions {
-  background-color: #111111;
+  background-color: #000000;
   margin: 2rem 0; /* CORREÇÃO: Zero nas laterais para alinhar com o título */
   padding: 2rem;
   min-height: 40rem;
   border-radius: 12px;
-  width: 100%;
+  width: 80rem;
   color: white; /* Texto dentro do histórico precisa ser branco */
+}
+.balance{
+  background-color: #837777;
+  max-width: 10rem;
+  border-radius: 5px;
+  max-height: 10rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
