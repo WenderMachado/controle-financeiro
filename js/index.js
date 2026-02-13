@@ -20,6 +20,32 @@ function createTransaction(transaction) {
         editBtn.classList.add('editBtn')
         editBtn.innerText = "EDIT"
 
+deleteBtn.addEventListener('click', async (ev)=>{
+   ev.preventDefault()
+   const id = transaction.id
+try{
+   const response = await fetch(`http://localhost:3000/finatials/${id}`, {
+      method: "DELETE",
+      headers: {
+      'Content-Type': 'application/json'
+   }
+   })
+   
+   if (response.ok) {
+      cardTransaction.remove()
+      console.log('Recurso deletado com sucesso!');
+    } else {
+      console.error('Erro ao tentar deletar:');
+    }
+   
+   }catch(error){
+      console.error('Erro de rede ou na requisição:')
+}
+
+
+
+
+})
 
     cardTransaction.append(client, balance, deleteBtn, editBtn)
     document.querySelector(`#transactions`).append(cardTransaction)
@@ -72,3 +98,4 @@ document.addEventListener(`DOMContentLoaded`, () => {
         }
     })
 })
+

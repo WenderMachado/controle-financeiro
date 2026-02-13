@@ -131,9 +131,33 @@ input:focus {
   align-self: flex-end;
   margin-bottom: 1rem;
 }
+.editBtn{
+  padding: 1rem 2rem;
+  height: 5rem; 
+  font-size: 2rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #083d88;
+  cursor: pointer;
+  color: #f3f3f3;
+  align-self: flex-end;
+  margin-bottom: 1rem;
+}
+.deleteBtn{
+   padding: 1rem 2rem;
+  height: 5rem; 
+  font-size: 2rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #5f1306;
+  cursor: pointer;
+  color: #f3f3f3;
+  align-self: flex-end;
+  margin-bottom: 1rem;
+}
 
 button:hover {
-  background-color: #b6073c;
+  background-color: #1d2122;
 }
 
 /* Área do Saldo */
@@ -151,12 +175,12 @@ button:hover {
 /* Área do Histórico (Caixa Preta) */
 #transactions {
   background-color: #000000;
-  margin: 2rem 0; /* CORREÇÃO: Zero nas laterais para alinhar com o título */
+  margin: 2rem 0; 
   padding: 2rem;
   min-height: 40rem;
   border-radius: 12px;
-  width: 80rem;
-  color: white; /* Texto dentro do histórico precisa ser branco */
+  width: 100rem;
+  color: white; 
 }
 .balance{
   background-color: #ffffff;
@@ -170,6 +194,6 @@ button:hover {
   align-content: center;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   padding: 1rem;
 }
