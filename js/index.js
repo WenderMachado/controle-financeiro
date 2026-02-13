@@ -12,7 +12,16 @@ function createTransaction(transaction) {
     balance.classList.add(`title`)
     balance.innerText = `R$ ${transaction.value}` 
 
-    cardTransaction.append(client, balance)
+   const deleteBtn = document.createElement('button')
+   const editBtn = document.createElement('button')
+
+        deleteBtn.classList.add('deleteBtn')
+        deleteBtn.innerText='DELETE'
+        editBtn.classList.add('editBtn')
+        editBtn.innerText = "EDIT"
+
+
+    cardTransaction.append(client, balance, deleteBtn, editBtn)
     document.querySelector(`#transactions`).append(cardTransaction)
 }
 
@@ -35,9 +44,10 @@ document.addEventListener(`DOMContentLoaded`, () => {
         const nameInput = document.getElementById(`name`).value
         const amountInput = document.getElementById('amount').value 
 
+      
         const newTransaction = {
             name: nameInput,
-            value: amountInput 
+            value: amountInput
         }
 
         try {

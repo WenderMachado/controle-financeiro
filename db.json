@@ -1,48 +1,42 @@
 {
   "finatials": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Car",
-      "value": 500,
-      "author": "Isaac"
+      "value": 500
     },
     {
-      "id": "15c4",
-      "name": "Wender Pereira",
-      "value": "3434"
+      "id": "74d6",
+      "name": "bicicleta ",
+      "value": "550"
     },
     {
-      "id": "2c8f",
+      "id": "6c78",
       "name": "",
       "value": ""
     },
     {
-      "id": "61cd",
+      "id": "5535",
       "name": "",
       "value": ""
     },
     {
-      "id": "3d6d",
+      "id": "6854",
       "name": "",
       "value": ""
     },
     {
-      "id": "6ec8",
+      "id": "6f91",
       "name": "",
       "value": ""
     },
     {
-      "id": "8a3a",
+      "id": "179d",
       "name": "",
       "value": ""
     },
     {
-      "id": "02e9",
-      "name": "",
-      "value": ""
-    },
-    {
-      "id": "e13b",
+      "id": "9e6a",
       "name": "",
       "value": ""
     }

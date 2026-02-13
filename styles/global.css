@@ -64,9 +64,11 @@ form {
 .title {
   font-size: 2.4rem;
   font-weight: 400;
-  color: #ffffff;
+  color: #000000;
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
+  padding: 1rem;
+  border: solid 5px #000;
 }
 .title-1{
   font-size: 3.6rem;
@@ -117,17 +119,17 @@ input:focus {
   border: solid #e2e609 2px;
 }
 
-button {
+.btn-1 {
   padding: 1rem 2rem;
-  height: 5rem; /* Altura fixa para alinhar melhor com os inputs */
+  height: 5rem; 
   font-size: 2rem;
   border-radius: 8px;
   border: none;
   background-color: #000000;
   cursor: pointer;
   color: #fff;
-  align-self: flex-end; /* Garante alinhamento com a base dos cards */
-  margin-bottom: 1rem; /* Pequeno ajuste se necessário */
+  align-self: flex-end;
+  margin-bottom: 1rem;
 }
 
 button:hover {
@@ -137,7 +139,7 @@ button:hover {
 /* Área do Saldo */
 .balance-container {
   text-align: left;
-  margin: 2rem 0; /* CORREÇÃO: Zero nas laterais para alinhar com o título */
+  margin: 2rem 0; 
   color: #000000;
 }
 
@@ -157,11 +159,17 @@ button:hover {
   color: white; /* Texto dentro do histórico precisa ser branco */
 }
 .balance{
-  background-color: #837777;
-  max-width: 10rem;
+  background-color: #ffffff;
+  max-width: 50rem;
   border-radius: 5px;
   max-height: 10rem;
   display: flex;
   align-items: center;
-  flex-direction: column;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
 }
