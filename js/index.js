@@ -4,13 +4,32 @@ function createTransaction(transaction) {
     cardTransaction.classList.add(`balance`)
     cardTransaction.id = `transaction-${transaction.id}`
 
-    const client = document.createElement(`span`)
-    client.classList.add(`title`)
+    const client = document.createElement(`p`)
+    client.classList.add(`transaction-title`)
     client.innerText = transaction.name
 
-    const balance = document.createElement("p")
-    balance.classList.add(`title`)
+    const balance = document.createElement("span")
+    balance.classList.add(`title-balance`)
     balance.innerText = `R$ ${transaction.value}` 
+
+   const amount = Number(transaction.value)
+
+   const formatter = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    })
+
+    const formattedAmount = formatter.format(amount)
+
+    if (amount > 0) {
+        balance.innerText = `${formattedAmount} C`
+        balance.classList.add('credit') 
+        balance.classList.remove('debit')
+    } else {
+        balance.innerText = `${formattedAmount} D`
+        balance.classList.add('debit') 
+        balance.classList.remove('credit')
+    }
 
    const deleteBtn = document.createElement('button')
    const editBtn = document.createElement('button')
@@ -48,14 +67,14 @@ try{
 editBtn.addEventListener('click', (ev) => {
         ev.preventDefault()
         
-        // 1. Preenche os inputs do formulário com os dados atuais
+      
         document.querySelector('#name').value = transaction.name
         document.querySelector('#amount').value = transaction.value
         
-        // 2. Guarda o ID na variável global para usarmos depois
+     
         editingId = transaction.id
         
-        // Opcional: Rola a página para o topo (se a lista for longa)
+     
         window.scrollTo(0, 0)
     })
 

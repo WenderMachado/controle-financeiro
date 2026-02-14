@@ -1,9 +1,14 @@
 {
   "finatials": [
     {
-      "name": "34",
-      "value": "456",
-      "id": "5246"
+      "id": "e312",
+      "name": "Academia",
+      "value": "100"
+    },
+    {
+      "id": "a06f",
+      "name": "churras",
+      "value": "-5000"
     }
   ]
 }
