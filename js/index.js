@@ -87,6 +87,7 @@ const renderTransactions = async function() {
     const response = await fetch("http://localhost:3000/finatials")
     const data = await response.json()
     data.forEach(createTransaction)
+    updateBalance()
 }
 
 document.addEventListener(`DOMContentLoaded`, () => {
@@ -145,3 +146,20 @@ document.addEventListener(`DOMContentLoaded`, () => {
     })
 })
 
+async function updateBalance() {
+    const balanceSpan = document.getElementById('balance') // Supondo que você tem esse ID no HTML
+    const response = await fetch("http://localhost:3000/finatials")
+    const transactions = await response.json()
+
+    // Reduce é uma função chique para somar arrays
+    const total = transactions.reduce((acc, transaction) => {
+        return acc + Number(transaction.value)
+    }, 0)
+
+    const formatter = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    })
+
+    balanceSpan.innerText = formatter.format(total)
+}
