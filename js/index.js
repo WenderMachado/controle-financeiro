@@ -1,4 +1,4 @@
-
+let editingId = null
 function createTransaction(transaction) {
     const cardTransaction = document.createElement(`div`)
     cardTransaction.classList.add(`balance`)
@@ -20,7 +20,7 @@ function createTransaction(transaction) {
         editBtn.classList.add('editBtn')
         editBtn.innerText = "EDIT"
 
-deleteBtn.addEventListener('click', async (ev)=>{
+   deleteBtn.addEventListener('click', async (ev)=>{
    ev.preventDefault()
    const id = transaction.id
 try{
@@ -42,10 +42,22 @@ try{
       console.error('Erro de rede ou na requisição:')
 }
 
+   })
 
 
-
-})
+editBtn.addEventListener('click', (ev) => {
+        ev.preventDefault()
+        
+        // 1. Preenche os inputs do formulário com os dados atuais
+        document.querySelector('#name').value = transaction.name
+        document.querySelector('#amount').value = transaction.value
+        
+        // 2. Guarda o ID na variável global para usarmos depois
+        editingId = transaction.id
+        
+        // Opcional: Rola a página para o topo (se a lista for longa)
+        window.scrollTo(0, 0)
+    })
 
     cardTransaction.append(client, balance, deleteBtn, editBtn)
     document.querySelector(`#transactions`).append(cardTransaction)
@@ -77,7 +89,24 @@ document.addEventListener(`DOMContentLoaded`, () => {
         }
 
         try {
-            const response = await fetch("http://localhost:3000/finatials", {
+
+            if(editingId){
+               const response = await fetch(`http://localhost:3000/finatials/${editingId}`, {
+                    method: "PUT",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(newTransaction)
+                })
+                const updatedTransaction = await response.json()
+
+                document.getElementById(`transaction-${editingId}`).remove()
+                
+                createTransaction(updatedTransaction)
+
+                editingId = null
+            }else{
+                const response = await fetch("http://localhost:3000/finatials", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json', 
@@ -85,13 +114,11 @@ document.addEventListener(`DOMContentLoaded`, () => {
                 body: JSON.stringify(newTransaction)
             })
 
-            const savedTransaction = await response.json()
-
+               const savedTransaction = await response.json()
+               createTransaction(savedTransaction)
            
-            createTransaction(savedTransaction)
-
-     
-            form.reset()
+            }
+               form.reset()
 
         } catch (error) {
             console.log(error)
